@@ -4,7 +4,7 @@ import static com.codeborne.selenide.Condition.matchText;
 import static com.codeborne.selenide.Selenide.$;
 import static java.lang.String.format;
 import static org.apache.commons.lang3.math.NumberUtils.INTEGER_ZERO;
-import static utils.WebDriverWaiter.waitForPageLoadComplete;
+import static utils.WebDriverWaiter.waitForPageLoadCompleteViaWaiterAndObjectCondition;
 
 import abstractClasses.page.AbstractPage;
 import com.codeborne.selenide.ElementsCollection;
@@ -34,7 +34,8 @@ public class SearchPage extends AbstractPage {
             (facetMap().get(entry.getKey())).selectOptionContainingText(entry.getValue());
         }
         refineResultsButtonElement().click();
-        waitForPageLoadComplete();
+        waitForPageLoadCompleteViaWaiterAndObjectCondition();
+//        waitForPageLoadComplete();
     }
 
     public void getAddProductToBasketButton(String buttonName, String productName) {
@@ -43,7 +44,8 @@ public class SearchPage extends AbstractPage {
                 .get(INTEGER_ZERO)
                 .$(format("a[class*='%s']", buttonName.toLowerCase().replace(" ", "-")))
                 .click();
-        waitForPageLoadComplete();
+        waitForPageLoadCompleteViaWaiterAndObjectCondition();
+//        waitForPageLoadComplete();
     }
 
     public AddToBasketPopUp getAddToBasketPopUp() {
