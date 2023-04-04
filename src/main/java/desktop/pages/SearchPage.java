@@ -2,8 +2,10 @@ package desktop.pages;
 
 import static com.codeborne.selenide.Condition.matchText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static java.lang.String.format;
 import static org.apache.commons.lang3.math.NumberUtils.INTEGER_ZERO;
+import static utils.WebDriverWaiter.waitForPageLoadComplete;
 import static utils.WebDriverWaiter.waitForPageLoadCompleteViaWaiterAndObjectCondition;
 
 import abstractClasses.page.AbstractPage;
@@ -18,7 +20,7 @@ import java.util.Map;
 
 public class SearchPage extends AbstractPage {
 
-   private SelenideElement rootElement = $("[class=' js'] div.page-slide");
+   private SelenideElement rootElement = $("[class='js'] div.page-slide");
 
     public List<String> searchResultBooksListText() {
         List<String> searchResultTextList = getSearchResultBooksTitlesList().texts();
@@ -34,8 +36,7 @@ public class SearchPage extends AbstractPage {
             (facetMap().get(entry.getKey())).selectOptionContainingText(entry.getValue());
         }
         refineResultsButtonElement().click();
-        waitForPageLoadCompleteViaWaiterAndObjectCondition();
-//        waitForPageLoadComplete();
+        waitForPageLoadComplete();
     }
 
     public void getAddProductToBasketButton(String buttonName, String productName) {
@@ -45,7 +46,6 @@ public class SearchPage extends AbstractPage {
                 .$(format("a[class*='%s']", buttonName.toLowerCase().replace(" ", "-")))
                 .click();
         waitForPageLoadCompleteViaWaiterAndObjectCondition();
-//        waitForPageLoadComplete();
     }
 
     public AddToBasketPopUp getAddToBasketPopUp() {
@@ -62,14 +62,15 @@ public class SearchPage extends AbstractPage {
     }
 
     private SelenideElement refineResultsButtonElement(){
-        return rootElement.$("[class=' js'] div.page-slide .filter-menu button");
+        return $(".filter-menu button");
     }
 
     private ElementsCollection getSearchResultBooksTitlesList() {
-        return rootElement.$$(".book-item h3.title");
+        return $$(".book-item h3.title");
     }
 
     private ElementsCollection getSearchResultBooksList() {
-        return rootElement.$$(".book-item");
+        return $$(".book-item");
     }
+
 }

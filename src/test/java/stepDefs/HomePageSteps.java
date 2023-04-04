@@ -25,4 +25,8 @@ public class HomePageSteps {
         homePage.search(bookName);
     }
 
+    @And("I close Annoucement popup")
+    public void closeAnnoucementPopup() {
+        homePage.closeAnnouncementPopup();
+    }
 }

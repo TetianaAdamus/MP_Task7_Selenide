@@ -8,7 +8,9 @@ Feature: Desktop Checkout for Guest User
 
     When I open the "Initial home page"
     Given I am an anonymous customer with clear cookies
+    And I close Annoucement popup
     And I search for "Thinking in Java"
+    And I close Annoucement popup
     And I am redirected to a "Search page"
     And Search results contain the following products
       | Thinking in Java       |
@@ -29,7 +31,7 @@ Feature: Desktop Checkout for Guest User
     Then I am redirected to a "Basket page"
     And Basket order summary is as following:
       | Delivery cost | Total   |
-      | FREE          | 84,73 € |
+      | FREE          | 84,92 € |
     When I click 'Checkout' button on 'Basket' page
     Then I am redirected to the "Checkout" page
     When I click 'Buy now' button
@@ -44,7 +46,7 @@ Feature: Desktop Checkout for Guest User
       | Please enter your card number, Please enter your card's expiration date, Please enter your CVV |
     And Checkout order summary is as following:
       | Sub-total | Delivery | VAT     |  Total   |
-      | 84,73 €   | FREE     | 0,00 €  | 84,73 €  |
+      | 84,92 €   | FREE     | 0,00 €  | 84,92 €  |
     And I checkout as a new customer with email "test@user.com"
     When I fill delivery address information manually:
       | Full name | Delivery country | Address line 1   | Address line 2   | Town/City | County/State | Postcode |

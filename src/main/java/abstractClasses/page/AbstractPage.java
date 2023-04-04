@@ -1,11 +1,13 @@
 package abstractClasses.page;
 
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.clearBrowserCookies;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.localStorage;
 import static com.codeborne.selenide.Selenide.sessionStorage;
 import static com.codeborne.selenide.WebDriverRunner.driver;
 import static constants.Constants.BOOK_DEPOSITORY;
+import static utils.WebDriverWaiter.waitForPageLoadCompleteViaWaiter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +19,13 @@ public class AbstractPage {
         clearBrowserCookies();
         localStorage().clear();
         sessionStorage().clear();
+    }
+
+    public void closeAnnouncementPopup() {
+        if ($(".modal-content").isDisplayed()) {
+            $("button[class='close']").click();
+            waitForPageLoadCompleteViaWaiter();
+        }
     }
 
     public Map<String, String> pagesNamesMap() {
