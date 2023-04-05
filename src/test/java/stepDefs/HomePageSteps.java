@@ -1,10 +1,12 @@
 package stepDefs;
 
 import static com.codeborne.selenide.Selenide.open;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import desktop.pages.HomePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class HomePageSteps {
@@ -28,5 +30,15 @@ public class HomePageSteps {
     @And("I close Annoucement popup")
     public void closeAnnoucementPopup() {
         homePage.closeAnnouncementPopup();
+    }
+
+    @Then("I open category {string}")
+    public void iOpenCategory(String categoryName) {
+        homePage.openCategory(categoryName);
+    }
+
+    @Then("I am on the {string}")
+    public void verifyPage(String page) {
+        assertThat(homePage.checkUrl(page)).isTrue();
     }
 }

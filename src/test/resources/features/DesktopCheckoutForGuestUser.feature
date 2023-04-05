@@ -1,4 +1,4 @@
-@Runme
+
 Feature: Desktop Checkout for Guest User
   As a customer
   I want to be able proceed to checkout
@@ -57,3 +57,16 @@ Feature: Desktop Checkout for Guest User
       | Expiry Month | 03               |
       | Expiry Year  | 2022             |
       | Cvv          | 123              |
+
+
+  Scenario: Adding the product to the cart
+    Given I open Thinking in Java product
+    And I close Annoucement popup
+    Then I am on the "Thinking in Java" product page
+
+  @Runme
+  Scenario: Bestseller cathegory opening
+    Given I open the "Initial home page"
+    And I close Annoucement popup
+    When I open category "Bestsellers"
+    Then I am on the "Bestsellers Page"

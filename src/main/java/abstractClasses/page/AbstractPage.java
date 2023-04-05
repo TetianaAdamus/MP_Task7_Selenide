@@ -34,6 +34,7 @@ public class AbstractPage {
         map.put("Basket page", BOOK_DEPOSITORY + "basket");
         map.put("Search page", BOOK_DEPOSITORY + "search");
         map.put("Checkout", BOOK_DEPOSITORY + "payment");
+        map.put("Bestsellers Page", BOOK_DEPOSITORY + "bestsellers");
         return map;
     }
 
