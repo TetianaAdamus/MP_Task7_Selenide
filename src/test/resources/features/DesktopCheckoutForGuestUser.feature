@@ -1,4 +1,4 @@
-
+@Runme
 Feature: Desktop Checkout for Guest User
   As a customer
   I want to be able proceed to checkout
@@ -64,7 +64,7 @@ Feature: Desktop Checkout for Guest User
     And I close Annoucement popup
     Then I am on the "Thinking in Java" product page
 
-  @Runme
+
   Scenario: Bestseller cathegory opening
     Given I open the "Initial home page"
     And I close Annoucement popup
